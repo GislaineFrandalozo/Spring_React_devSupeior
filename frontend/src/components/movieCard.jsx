@@ -22,7 +22,7 @@ export default function MovieCard() {
                     <MovieStars />
                     <p className=" text-center mt-3">{movie.count} avaliações</p>
                 </div>
-                <Link class="d-flex justify-content-center p-2" to="/from/1">
+                <Link class="d-flex justify-content-center p-2" to="/form/1">
                     <button class="btn btn-dsmovie col-8">Avaliar</button>
                 </Link>
             </div>
