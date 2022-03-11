@@ -18,7 +18,11 @@ a, a:hover {
   color: unset;
 }
 
-.btn{
+.btn-dsmovie{
   background-color: var(--color-primary);
   border-color: var(--color-primary);
+  color: var( --bs-light);
+}
+.color-font-dsmovie{
+  color: var(--color-primary);
 }
