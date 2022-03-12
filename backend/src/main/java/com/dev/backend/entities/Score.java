@@ -7,7 +7,8 @@ import javax.persistence.Table;
 @Table(name = "tb_score")
 public class Score {
 	
-	@EmbeddedId // Para ID's compostos
+	// Para ID's compostos
+	@EmbeddedId 
 	private ScorePK id = new ScorePK();
 	
 	private Double value;
@@ -21,7 +22,7 @@ public class Score {
 	public void setUser(User user) {
 		id.setUser(user);
 	}
-	
+
 	public ScorePK getId() {
 		return id;
 	}
