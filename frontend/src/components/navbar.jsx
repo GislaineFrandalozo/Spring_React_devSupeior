@@ -9,8 +9,8 @@ export default function Navbar() {
                     <div className='col text-light fs-2 fw-bold'>DSMovie</div>
                     <a className='col-auto' href="https://github.com/GislaineFrandalozo">
                         <div className="row gx-2">
-                            <div className='col align-self-center' style={{ width: '2rem'}} >
-                            <GitHub />
+                            <div className='col align-self-center' style={{ width: '2rem' }} >
+                                <GitHub />
                             </div>
                             <div className="col d-flex">
                                 <p className='m-2 mt-2 pt-1 fs-6 text-light'>/GislaineFrandalozo</p>

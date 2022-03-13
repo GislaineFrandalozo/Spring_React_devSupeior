@@ -1,27 +1,27 @@
-import { ReactComponent as StarFull } from '../assets/img/star_full.svg'
-import { ReactComponent as StarHalf } from '../assets/img/star_half.svg'
-import { ReactComponent as StarEmpty } from '../assets/img/star_empty.svg'
 
+import { getFills } from '../methods/getFills'
+import { StarFill } from '../methods/starFills'
 
-export default function MovieStars() {
-   
-    return(
-       <div className="row justify-content-center">
-           <div className="col-1 p-1">
-               <StarFull />
-               </div>
-           <div className="col-1 p-1">
-           <StarFull />
-               </div>
-           <div className="col-1 p-1">
-           <StarHalf />
-               </div>
-           <div className="col-1 p-1">
-           <StarEmpty />
-               </div>
-           <div className="col-1 p-1">
-           <StarEmpty />
-               </div>
-       </div>
-    )
+export default function MovieStars({ score }) {
+  const createStars = getFills(score)
+
+  return (
+    <div className="row justify-content-center">
+      <div className="col-1 p-1">
+        {StarFill(createStars[0])}
+      </div>
+      <div className="col-1 p-1">
+        {StarFill(createStars[1])}
+      </div>
+      <div className="col-1 p-1">
+        {StarFill(createStars[2])}
+      </div>
+      <div className="col-1 p-1">
+        {StarFill(createStars[3])}
+      </div>
+      <div className="col-1 p-1">
+        {StarFill(createStars[4])}
+      </div>
+    </div>
+  )
 }
