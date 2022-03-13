@@ -2,9 +2,25 @@ import axios from "axios"
 import Pagination from "../components/pagination"
 import MovieCard from '../components/movieCard'
 import { BASE_URL } from "../utils/requests"
-export default function Listing() {
+import { useEffect } from "react"
 
-    axios.get(`${BASE_URL}/movies`).then(res => { console.log(res) })
+async function request() {
+    return new Promise(() => {
+        axios.get(`${BASE_URL}/movies`).then(res => { console.log(res) })
+    })
+}
+
+export default function Listing() {
+    
+    console.log("YYYYYYYYYYY")
+    useEffect(() => {
+        request()
+        console.log("XXXXXXXXXX")
+    }, [
+
+    ]
+    )
+
     
     return(
         <>
