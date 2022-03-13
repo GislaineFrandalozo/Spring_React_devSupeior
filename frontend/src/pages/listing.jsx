@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { getMovies } from "../services/http"
 
 export default function Listing() {
-    const vazio = <p>LISTA VAZIA</p>
+    const vazio = <p></p>
     const [page, setNewPage] = useState(0)
     const [listMovies, setListMovies] = useState({
         content: [],
