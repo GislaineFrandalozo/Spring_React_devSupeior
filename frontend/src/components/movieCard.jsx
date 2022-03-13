@@ -11,19 +11,19 @@ export default function MovieCard() {
     };
     return (
         <div className='col d-flex justify-content-center'>
-        <div class="card m-2 " style={{ width: '25rem' }}>
-            <img src={movie.image} class="card-img-top" alt="..." />
-            <div class="card-body">
-                <div class="d-flex justify-content-center p-2">
-                    <h5 class="card-title fs-5 fw-bolder">{movie.title}</h5>
+        <div className="card m-2 " style={{ width: '25rem' }}>
+            <img src={movie.image} className="card-img-top" alt="..." />
+            <div className="card-body">
+                <div className="d-flex justify-content-center p-2">
+                    <h5 className="card-title fs-5 fw-bolder">{movie.title}</h5>
                 </div>
-                <div class="bg-nfo">
+                <div className="bg-nfo">
                     <p className=" text-center">{movie.score > 0 ? movie.score.toFixed(1) : '-'}</p>
                     <MovieStars />
                     <p className=" text-center mt-3">{movie.count} avaliações</p>
                 </div>
-                <Link class="d-flex justify-content-center p-2" to="/form/1">
-                    <button class="btn btn-dsmovie col-8">Avaliar</button>
+                <Link className="d-flex justify-content-center p-2" to="/form/1">
+                    <button className="btn btn-dsmovie col-8">Avaliar</button>
                 </Link>
             </div>
         </div>
