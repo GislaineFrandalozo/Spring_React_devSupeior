@@ -3,6 +3,7 @@ import { ReactComponent as ArrowRight} from '../assets/img/arrow_right.svg'
 
 export default function Pagination({page, onChange}) {
    // const handleClick = () => {page}
+   const dezConto = false
     return(
     <div className="row m-3 align-items-center justify-content-center">
         <div className="col-1 d-flex justify-content-end ">
@@ -12,7 +13,8 @@ export default function Pagination({page, onChange}) {
         </div>
         <div className="col-1 ">
         <div className="m-1 color-font-dsmovie text-center">
-            {`${page.number + 1}`}
+           
+              {dezConto?? 9}
         </div>
         <div className="color-font-dsmovie text-center" > de </div>    
         <div className="m-1 color-font-dsmovie text-center">
