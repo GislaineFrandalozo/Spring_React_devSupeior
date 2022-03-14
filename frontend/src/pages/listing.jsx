@@ -12,7 +12,7 @@ export default function Listing() {
         totalPages: 0,
         totalElements: 0,
         size: 8,
-        number: 0,
+        number: -1,
         first: true,
         numberOfElements: 0,
         empty: true
@@ -26,7 +26,7 @@ export default function Listing() {
                     totalPages: res.totalPages,
                     totalElements: res.totalElements,
                     size: res.size,
-                    number: res.number + 1,
+                    number: res.number,
                     first: res.first,
                     numberOfElements: res.numberOfElements,
                     empty: res.empty
