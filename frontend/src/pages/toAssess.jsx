@@ -33,7 +33,6 @@ export default function ToAssess() {
             }
         putAssess(config)
         .then(res => { 
-            console.log("ok")
             navigate(`/`)})
         .catch(res => {
             console.log(res)})

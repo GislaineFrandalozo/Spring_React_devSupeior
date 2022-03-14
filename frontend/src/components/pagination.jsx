@@ -12,7 +12,7 @@ export default function Pagination({page, onChange}) {
         </div>
         <div className="col-1 ">
         <div className="m-1 color-font-dsmovie text-center">
-            {`${page.number + 1}`}
+            { `${page.number}`}
         </div>
         <div className="color-font-dsmovie text-center" > de </div>    
         <div className="m-1 color-font-dsmovie text-center">

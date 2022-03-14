@@ -2,9 +2,9 @@ import Pagination from "../components/pagination"
 import MovieCard from '../components/movieCard'
 import { useState, useEffect } from "react"
 import { getMovies } from "../services/http"
+import { PlaceholderCard } from "../components/placeholderCard"
 
 export default function Listing() {
-    const vazio = <p></p>
     const [page, setNewPage] = useState(0)
     const [listMovies, setListMovies] = useState({
         content: [],
@@ -20,7 +20,17 @@ export default function Listing() {
     useEffect(() => {
         getMovies(page)
             .then((res) => {
-                setListMovies(res)
+                setListMovies({
+                    content: res.content,
+                    last: res.last,
+                    totalPages: res.totalPages,
+                    totalElements: res.totalElements,
+                    size: res.size,
+                    number: res.number + 1,
+                    first: res.first,
+                    numberOfElements: res.numberOfElements,
+                    empty: res.empty
+                })
             })
             .catch((error) => { console.log(error) })
     }, [page])
@@ -34,7 +44,7 @@ export default function Listing() {
         <>
             <Pagination page={listMovies} onChange={handlePageChange} />
             <div className="row m-4 row-cols-md-2 row-cols-lg-3">
-                {movies.length === 0 ? vazio : movies}
+                {movies.length === 0 ? <PlaceholderCard /> : movies}
             </div>
         </>
     )
