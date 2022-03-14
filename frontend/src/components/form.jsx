@@ -28,7 +28,7 @@ export default function Form({
                             </div>
                             <div className="mb-3">
                                 <label for="exampleFormControlInput1" className="form-label text-secondary">Informe sua avaliação</label>
-                                <input required pattern='[0-5]{1}[.][0-9]{1}' type="text" className="form-control" id="exampleFormControlInput1" />
+                                <input required pattern='[0-5]{1}[.][0-9]{1}' type="text" className="form-control" id="exampleFormControlInput1" placeholer="Máximo permitido é 5"/>
                             </div>
                         </div>
                         <div className="d-flex justify-content-center p-1">

@@ -26,6 +26,11 @@ export default function ToAssess() {
                     event.stopPropagation()
                 }
             }
+            if (event.target[1].value > 5.0){
+                console.log(event.target[1].value)
+                throw alert("Erro o valor deve ser menor ou igual a 5.0")
+               
+            }
             const config = {
                 email: event.target[0].value,
                 movieId: movie.id,
