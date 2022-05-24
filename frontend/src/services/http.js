@@ -1,7 +1,7 @@
 import axios from "axios"
 import { BASE_URL } from "../utils/requests"
 
-export async function getMovies(page) {
+async function getMovies(page) {
     return new Promise((resolve, reject) => {
         axios.get(`${BASE_URL}/movies?size=8&sort=id,desc&page=${page}`)
             .then(res => { resolve(res.data) })
@@ -9,7 +9,7 @@ export async function getMovies(page) {
     })
 }
 
-export async function getMovie(param) {
+async function getMovie(param) {
     return new Promise((resolve, reject) => {
         axios.get(`${BASE_URL}/movies/${param}`)
             .then(res => { resolve(res.data) })
@@ -17,8 +17,7 @@ export async function getMovie(param) {
     })
 }
 
-export async function putAssess(form) {
-
+async function putAssess(form) {
     const data = {
         email: form.email,
         movieId: form.movieId,
@@ -32,3 +31,5 @@ export async function putAssess(form) {
             })
     })
 }
+
+export { getMovies, getMovie, putAssess }

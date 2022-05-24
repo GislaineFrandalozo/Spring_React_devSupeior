@@ -1,10 +1,9 @@
 import { Pagination } from "../components/pagination"
-import { MovieCard } from '../components/movieCard'
 import { useState, useEffect } from "react"
 import { getMovies } from "../services/http"
 import { Spinner } from "../components/spinner"
 import { Navbar } from "../components/navbar"
-
+import { StackMovies } from '../components/stackMovies'
 function PageListing() {
     const [spinner, setSpinner] = useState(true)
     const [page, setNewPage] = useState(0)
@@ -38,20 +37,18 @@ function PageListing() {
             .catch((error) => { console.log(error) })
     }, [page])
 
-    const handlePageChange = (newPage) => { setNewPage(newPage) }
-
-    const movies = listMovies.content.map((movie) => {
-        return <MovieCard key={movie.id} metadata={movie} />
-    })
+    const handlePageChange = (newPage) => {
+        setSpinner(true)
+        setNewPage(newPage)
+    }
     return (
         <div className="container-fluid">
             <div className="row justify-content-center">
                 <Navbar />
                 <Pagination page={listMovies} onChange={handlePageChange} />
-                {spinner === true && <Spinner />}
-                <div className="row p-4 row-cols-md-2 row-cols-lg-3">
-                    {spinner === false && movies}
-                </div>
+                {spinner ? <Spinner /> :
+                    <StackMovies listMovies={listMovies.content} />
+                }
             </div>
         </div>
     )
