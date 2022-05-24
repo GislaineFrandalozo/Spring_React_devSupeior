@@ -1,13 +1,18 @@
-import { Route, Routes } from "react-router-dom";
-import Listing from "./pages/listing";
-import ToAssess from "./pages/toAssess";
-export default function RoutesApp() {
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { PageListing } from "./pages/listing";
+import { PageToAssess } from "./pages/toAssess";
+
+function RoutesApp() {
     return (
+        <BrowserRouter>
         <Routes>
-            <Route element={<Listing />} path="/" exact />
+            <Route element={<PageListing />} path="/" exact />
             <Route path="/form">
-                <Route path=":movieId" element={<ToAssess />} />
+                <Route path=":movieId" element={<PageToAssess />} />
             </Route>
         </Routes>
+        </BrowserRouter>
     )
 } 
+
+export { RoutesApp }
