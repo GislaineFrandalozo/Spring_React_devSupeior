@@ -4,11 +4,14 @@ import { Form } from "../components/form";
 import { getMovie, putAssess } from "../services/http";
 import { Navbar } from "../components/navbar";
 import { Error } from "../components/error";
+import { Alert } from "../components/alert";
 
 function PageToAssess() {
+    const feedback = "Endereço de email não é compatível. Exemplo: nome@email.com"
     const params = useParams()
     const navigate = useNavigate()
-    const [state, setState] = useState(true) 
+    const [alert, setAlert] = useState(false)
+    const [stateForm, setStateForm] = useState(true)
     const [movie, setMovie] = useState({
         id: 0,
         image: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image-620x600.jpg",
@@ -19,26 +22,21 @@ function PageToAssess() {
     useEffect(() => {
         getMovie(params.movieId)
             .then(res => {
-                setState(false)
+                setStateForm(false)
                 setMovie(res.data)
             })
-            .catch(() => { setState(true) })
+            .catch(() => { setStateForm(true) })
 
     }, [params.movieId])
-
-    const handleSubmit = (event) => {
+    const onClick = () => { setAlert(false) }
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        for (let imput = 0; imput < 1; imput++) {
-            let imputTag = event.target[imput]
-            if (imputTag.checkValidity() === false) {
-                event.stopPropagation()
-            }
+        if(!/.+@.+\.com/.test(event.target[0].value)){
+            setAlert(true)
+            event.stopPropagation()
+            return
         }
-        if (event.target[1].value > 5.0) {
-            console.log(event.target[1].value)
-            throw alert("Erro o valor deve ser menor ou igual a 5.0")
-
-        }
+        
         const config = {
             email: event.target[0].value,
             movieId: movie.id,
@@ -57,9 +55,12 @@ function PageToAssess() {
             <div className="row justify-content-center">
                 <Navbar />
                 <div className="col-12">
-                {state ? <Error /> :
-                <Form metadata={movie} onSubmit={handleSubmit} />
-                }
+                    {stateForm ? <Error /> :
+                        <Form metadata={movie} onSubmit={handleSubmit} />
+                    }
+                </div>
+                <div className="col-12">
+                {alert === true && <Alert feedback={feedback} toggle={onClick} />}
                 </div>
             </div>
         </div>)

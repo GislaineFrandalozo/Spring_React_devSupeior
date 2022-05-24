@@ -25,11 +25,11 @@ function Form({
                         <div className="mb-2 mt-2">
                             <div className="mb-3">
                                 <label for="exampleFormControlInput1" className="form-label text-secondary">Informe seu email</label>
-                                <input required pattern='.+@.+\.com' type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                                <input required type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
                             </div>
                             <div className="mb-3">
                                 <label for="exampleFormControlInput1" className="form-label text-secondary">Informe sua avaliação</label>
-                                <input required pattern='[0-5]{1}[.][0-9]{1}' type="text" className="form-control" id="exampleFormControlInput1" placeholer="Máximo permitido é 5"/>
+                                <input required min={0} max={5} step="0.1" type="number" className="form-control" id="exampleFormControlInput1" placeholer="Valor entre 0 e 5."/>
                             </div>
                         </div>
                         <div className="d-flex justify-content-center p-1">
