@@ -2,19 +2,11 @@ import axios from "axios"
 import { BASE_URL } from "../utils/requests"
 
 async function getMovies(page) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${BASE_URL}/movies?size=8&sort=id,desc&page=${page}`)
-            .then(res => { resolve(res.data) })
-            .catch(error => { reject(error) })
-    })
+    return axios.get(`${BASE_URL}/movies?size=8&sort=id,desc&page=${page}`)
 }
 
 async function getMovie(param) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${BASE_URL}/movies/${param}`)
-            .then(res => { resolve(res.data) })
-            .catch(error => { reject(error) })
-    })
+    return axios.get(`${BASE_URL}/movies/${param}`)
 }
 
 async function putAssess(form) {

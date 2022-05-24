@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { Form } from "../components/form";
 import { getMovie, putAssess } from "../services/http";
 import { Navbar } from "../components/navbar";
+import { Error } from "../components/error";
 
 function PageToAssess() {
     const params = useParams()
     const navigate = useNavigate()
+    const [state, setState] = useState(true) 
     const [movie, setMovie] = useState({
         id: 0,
         image: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image-620x600.jpg",
@@ -15,7 +17,12 @@ function PageToAssess() {
         score: 0
     })
     useEffect(() => {
-        getMovie(params.movieId).then(res => setMovie(res)).catch((error) => { console.log(error) })
+        getMovie(params.movieId)
+            .then(res => {
+                setState(false)
+                setMovie(res.data)
+            })
+            .catch(() => { setState(true) })
 
     }, [params.movieId])
 
@@ -47,9 +54,13 @@ function PageToAssess() {
     }
     return (
         <div className="container-fluid">
-            <div className="row">
+            <div className="row justify-content-center">
                 <Navbar />
+                <div className="col-12">
+                {state ? <Error /> :
                 <Form metadata={movie} onSubmit={handleSubmit} />
+                }
+                </div>
             </div>
         </div>)
 

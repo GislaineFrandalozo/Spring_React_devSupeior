@@ -21,16 +21,17 @@ function PageListing() {
     useEffect(() => {
         getMovies(page)
             .then((res) => {
+                const dataResponse = res.data
                 setListMovies({
-                    content: res.content,
-                    last: res.last,
-                    totalPages: res.totalPages,
-                    totalElements: res.totalElements,
-                    size: res.size,
-                    number: res.number,
-                    first: res.first,
-                    numberOfElements: res.numberOfElements,
-                    empty: res.empty
+                    content: dataResponse.content,
+                    last: dataResponse.last,
+                    totalPages: dataResponse.totalPages,
+                    totalElements: dataResponse.totalElements,
+                    size: dataResponse.size,
+                    number: dataResponse.number,
+                    first: dataResponse.first,
+                    numberOfElements: dataResponse.numberOfElements,
+                    empty: dataResponse.empty
                 })
                 setSpinner(false)
             })
@@ -45,10 +46,12 @@ function PageListing() {
         <div className="container-fluid">
             <div className="row justify-content-center">
                 <Navbar />
+                <div className="col-12">
                 <Pagination page={listMovies} onChange={handlePageChange} />
                 {spinner ? <Spinner /> :
                     <StackMovies listMovies={listMovies.content} />
                 }
+                </div>
             </div>
         </div>
     )
