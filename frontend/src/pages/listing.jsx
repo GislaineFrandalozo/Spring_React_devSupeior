@@ -1,10 +1,12 @@
-import Pagination from "../components/pagination"
-import MovieCard from '../components/movieCard'
+import { Pagination } from "../components/pagination"
+import { MovieCard } from '../components/movieCard'
 import { useState, useEffect } from "react"
 import { getMovies } from "../services/http"
-import { PlaceholderCard } from "../components/placeholderCard"
+import { Spinner } from "../components/spinner"
+import { Navbar } from "../components/navbar"
 
-export default function Listing() {
+function PageListing() {
+    const [spinner, setSpinner] = useState(true)
     const [page, setNewPage] = useState(0)
     const [listMovies, setListMovies] = useState({
         content: [],
@@ -31,6 +33,7 @@ export default function Listing() {
                     numberOfElements: res.numberOfElements,
                     empty: res.empty
                 })
+                setSpinner(false)
             })
             .catch((error) => { console.log(error) })
     }, [page])
@@ -41,11 +44,17 @@ export default function Listing() {
         return <MovieCard key={movie.id} metadata={movie} />
     })
     return (
-        <>
-            <Pagination page={listMovies} onChange={handlePageChange} />
-            <div className="row m-4 row-cols-md-2 row-cols-lg-3">
-                {movies.length === 0 ? <PlaceholderCard /> : movies}
+        <div className="container-fluid">
+            <div className="row justify-content-center">
+                <Navbar />
+                <Pagination page={listMovies} onChange={handlePageChange} />
+                {spinner === true && <Spinner />}
+                <div className="row p-4 row-cols-md-2 row-cols-lg-3">
+                    {spinner === false && movies}
+                </div>
             </div>
-        </>
+        </div>
     )
 }
+
+export { PageListing }

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-export default function Form({
+
+function Form({
     metadata = {
         id: 0,
         image: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image-620x600.jpg",
@@ -43,3 +44,5 @@ export default function Form({
         </div>
     )
 }
+
+export { Form }

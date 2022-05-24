@@ -2,7 +2,7 @@
 import { getFills } from '../methods/getFills'
 import { StarFill } from '../methods/starFills'
 
-export default function MovieStars({ score }) {
+function MovieStars({ score }) {
   const createStars = getFills(score)
 
   return (
@@ -25,3 +25,4 @@ export default function MovieStars({ score }) {
     </div>
   )
 }
+export { MovieStars }

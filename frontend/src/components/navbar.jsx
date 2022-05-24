@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent as GitHub } from '../assets/img/github.svg'
 import '../assets/styles/navbar.css'
-export default function Navbar() {
+function Navbar() {
     return (
         <header className='dsmovie-navbar'>
             <nav className="container-fluid px-5">
@@ -22,3 +22,5 @@ export default function Navbar() {
         </header>
     )
 }
+
+export { Navbar }

@@ -1,7 +1,7 @@
 import { ReactComponent as ArrowLeft} from '../assets/img/arrow_left.svg'
 import { ReactComponent as ArrowRight} from '../assets/img/arrow_right.svg'
 
-export default function Pagination({page, onChange}) {
+function Pagination({page, onChange}) {
    // const handleClick = () => {page}
     return(
     <div className="row m-3 align-items-center justify-content-center">
@@ -27,3 +27,5 @@ export default function Pagination({page, onChange}) {
     </div>
     )
 }
+
+export { Pagination }

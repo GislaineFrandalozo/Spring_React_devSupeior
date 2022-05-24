@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Form from "../components/form";
+import { Form } from "../components/form";
 import { getMovie, putAssess } from "../services/http";
+import { Navbar } from "../components/navbar";
 
-export default function ToAssess() {
+function PageToAssess() {
     const params = useParams()
     const navigate = useNavigate()
     const [movie, setMovie] = useState({
@@ -17,30 +18,41 @@ export default function ToAssess() {
         getMovie(params.movieId).then(res => setMovie(res)).catch((error) => { console.log(error) })
 
     }, [params.movieId])
-  
+
     const handleSubmit = (event) => {
         event.preventDefault()
-            for (let imput = 0; imput < 1; imput++) {
-                let imputTag = event.target[imput]
-                if (imputTag.checkValidity() === false) {
-                    event.stopPropagation()
-                }
+        for (let imput = 0; imput < 1; imput++) {
+            let imputTag = event.target[imput]
+            if (imputTag.checkValidity() === false) {
+                event.stopPropagation()
             }
-            if (event.target[1].value > 5.0){
-                console.log(event.target[1].value)
-                throw alert("Erro o valor deve ser menor ou igual a 5.0")
-               
-            }
-            const config = {
-                email: event.target[0].value,
-                movieId: movie.id,
-                score: event.target[1].value
-            }
-        putAssess(config)
-        .then(res => { 
-            navigate(`/`)})
-        .catch(res => {
-            console.log(res)})
         }
-    return (<Form metadata={movie} onSubmit={handleSubmit} />)
+        if (event.target[1].value > 5.0) {
+            console.log(event.target[1].value)
+            throw alert("Erro o valor deve ser menor ou igual a 5.0")
+
+        }
+        const config = {
+            email: event.target[0].value,
+            movieId: movie.id,
+            score: event.target[1].value
+        }
+        putAssess(config)
+            .then(res => {
+                navigate(`/`)
+            })
+            .catch(res => {
+                console.log(res)
+            })
+    }
+    return (
+        <div className="container-fluid">
+            <div className="row">
+                <Navbar />
+                <Form metadata={movie} onSubmit={handleSubmit} />
+            </div>
+        </div>)
+
 }
+
+export { PageToAssess }

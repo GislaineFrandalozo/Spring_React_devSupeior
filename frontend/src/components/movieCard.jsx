@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import MovieStars from './movieStars';
+import { MovieStars } from './movieStars';
 
-export default function MovieCard({
+function MovieCard({
     metadata = {
         id: 0,
         image: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image-620x600.jpg",
@@ -35,3 +35,5 @@ export default function MovieCard({
         </div>
     )
 }
+
+export { MovieCard }
